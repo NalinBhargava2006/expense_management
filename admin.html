@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin - Expense Tracker</title>
+</head>
+<body>
+    <h2>Admin Login</h2>
+    <form method="post">
+        Password: <input type="password" name="password">
+        <button type="submit">Login</button>
+    </form>
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+    {% if expenses %}
+        <h3>All Expenses</h3>
+        <ul>
+            {% for e in expenses %}
+                <li>{{ e[0] }} - {{ e[1] }}: ₹{{ e[2] }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>
